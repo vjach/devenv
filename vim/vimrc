@@ -1,0 +1,18 @@
+" switch buffers without saving them
+set hidden
+" switching buffers shortcut
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+
+" line numbers
+set number relativenumber
+highlight LineNr ctermfg=grey
+
+" activate pathogen plugin manager
+execute pathogen#infect()
+
+syntax on
+filetype plugin indent on
