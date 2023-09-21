@@ -1,18 +1,75 @@
+" don't care about vi
+set nocompatible
+set number              " show line numbers
+set relativenumber
+set showcmd             " show command in bottom bar
+
+" switching buffers shortcut
+:nnoremap ,b :buffers<CR>:buffer<Space>
+
+" file exporer in tree style
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+
+" file recursive search
+set path+=**
+set complete+=k**/*
+
+set wildmenu        " visual autocomplete for command menu
+set wildmode=list:full " see :h 'wildmode' for all the possible values
+let &wildcharm = &wildchar
+cnoremap <C-j> <DOWN>
+cnoremap <C-k> <UP>
+
+set showmatch           " highlight matching [{()}]
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
+" reread files on change
+set autoread
+
+" show current file name
+set laststatus=2
+
 " switch buffers without saving them
 set hidden
-" switching buffers shortcut
-:nnoremap <F5> :buffers<CR>:buffer<Space>
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
+
+autocmd FileType netrw setl bufhidden=wipe
+
+" disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" highlight trailing white spaces
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+
+" paste
+set pastetoggle=<F3>
+
+" vimgrep
+:nmap <F4> :vimgrep<space>
 
 " line numbers
 set number relativenumber
-highlight LineNr ctermfg=grey
-
-" activate pathogen plugin manager
-execute pathogen#infect()
+highlight LineNr ctermfg=94
 
 syntax on
+filetype on
 filetype plugin indent on
+set t_Co=256
+set autoread
+let g:pymode_options_max_line_length=120
+
+autocmd FileType c ClangFormatAutoEnable
+autocmd FileType h ClangFormatAutoEnable
+autocmd FileType cpp ClangFormatAutoEnable
+autocmd FileType hpp ClangFormatAutoEnable
+
+set background=dark
+colorscheme solarized8
