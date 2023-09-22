@@ -73,3 +73,26 @@ autocmd FileType hpp ClangFormatAutoEnable
 
 set background=dark
 colorscheme solarized8
+let g:solarized_termcolors=256
+
+set encoding=utf-8
+" Enable debugging
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
+
+" If the base settings don't repro, paste your existing config for YCM only,
+" here:
+" let g:ycm_....
+
+" Load YCM (only)
+let &rtp .= ',' . expand( '<sfile>:p:h' )
+filetype plugin indent on
+syn on
+
+" YCM keys:
+let mapleader=","
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+let g:ycm_clangd_args = ["--compile-commands-dir="..getcwd()]
