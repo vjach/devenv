@@ -17,6 +17,7 @@ set complete+=k**/*
 
 set wildmenu        " visual autocomplete for command menu
 set wildmode=list:full " see :h 'wildmode' for all the possible values
+set wildignore+=*.jpg,*.png,*.o,*.obj.*.obj.d,*.swp,*.bin
 let &wildcharm = &wildchar
 cnoremap <C-j> <DOWN>
 cnoremap <C-k> <UP>
